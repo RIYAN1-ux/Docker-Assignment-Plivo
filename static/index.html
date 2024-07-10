@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Books API</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+      }
+      h1 {
+        color: #444;
+        margin-bottom: 20px;
+        font-size: 2.5em;
+        font-weight: bold;
+        position: relative;
+        display: inline-block;
+      }
+      h1::after {
+        content: '';
+        width: 60px;
+        height: 5px;
+        background-color: #5cb85c;
+        display: block;
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -10px;
+      }
+      .info {
+        margin-bottom: 20px;
+        font-size: 1.1em;
+        color: #666;
+      }
+      .info a {
+        color: #337ab7;
+        text-decoration: none;
+      }
+      .info a:hover {
+        text-decoration: underline;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      input[type="search"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        max-width: 300px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #5cb85c;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #4cae4c;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th, td {
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .links {
+        margin-top: 20px;
+      }
+      .link-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .link-buttons a {
+        padding: 10px 20px;
+        background-color: #337ab7;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+      .link-buttons a:hover {
+        background-color: #286090;
+      }
+      .no-books {
+        text-align: center;
+        font-weight: bold;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Books API</h1>
+      <div class="info">
+        The books API is at <a href="/books" target="_blank">/books</a>
+      </div>
+      <form accept="" method="GET">
+        <label for="search-bar">Search for books by id (1-5)</label>
+        <input type="search" id="search-bar" placeholder="Enter book ID..." />
+        <button id="searchBtn" type="submit">Search</button>
+      </form>
+      <table id="booksTable" style="text-transform: capitalize" border="1">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>author</th>
+            <th>publisher</th>
+            <th>year</th>
+            <th>genre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- populate table with data -->
+        </tbody>
+      </table>
+      <div class="links">
+        <p>The individual books can be found at:</p>
+        <div class="link-buttons">
+          <a href="/books/1" target="_blank">Book 1</a>
+          <a href="/books/2" target="_blank">Book 2</a>
+          <a href="/books/3" target="_blank">Book 3</a>
+          <a href="/books/4" target="_blank">Book 4</a>
+          <a href="/books/5" target="_blank">Book 5</a>
+        </div>
+      </div>
+    </div>
+    <script type="module" defer>
+      const url = "/books";
+
+      function fetchToHTML(url) {
+        const booksTable = document.getElementById("booksTable");
+        const tbody = booksTable.querySelector("tbody");
+        tbody.innerHTML = "";
+
+        const searchBar = document.getElementById("search-bar");
+
+        // if there is a value in the search bar, filter the data
+        if (searchBar.value.trim() !== "") {
+          const bookId = searchBar.value.trim();
+          tbody.innerHTML = "";
+
+          fetch(`${url}/${bookId}`)
+            .then((response) => {
+              if (response.status === 404) {
+                throw new Error("Book not found");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              const row = document.createElement("tr");
+              row.innerHTML = `
+                <td>${data.id}</td>
+                <td>${data.title}</td>
+                <td>${data.author}</td>
+                <td>${data.publisher}</td>
+                <td>${data.year}</td>
+                <td>${data.genre}</td>
+              `;
+              tbody.appendChild(row);
+
+              return;
+            })
+            .catch((error) => {
+              console.error(error);
+              const row = document.createElement("tr");
+              row.innerHTML = `
+                <td colspan="6" class="no-books">No books found</td>
+              `;
+              tbody.appendChild(row);
+            });
+
+          return;
+        }
+
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            data.forEach((book) => {
+              const row = document.createElement("tr");
+              row.innerHTML = `
+              <td>${book.id}</td>
+              <td>${book.title}</td>
+              <td>${book.author}</td>
+              <td>${book.publisher}</td>
+              <td>${book.year}</td>
+              <td>${book.genre}</td>
+            `;
+              tbody.appendChild(row);
+            });
+          });
+      }
+
+      fetchToHTML(url);
+
+      const searchBtn = document.getElementById("searchBtn");
+      searchBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        const url = `/books`;
+        fetchToHTML(url);
+      });
+
+      const searchBar = document.getElementById("search-bar");
+      searchBar.addEventListener("keyup", (event) => {
+        event.preventDefault();
+        const url = `/books`;
+        fetchToHTML(url);
+      });
+    </script>
+  </body>
+</html>
