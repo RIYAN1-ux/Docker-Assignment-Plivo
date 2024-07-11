@@ -20,7 +20,13 @@ The Application that is created is a simple web application that provides inform
   2. Install all dependencies : `npm install` .
   3. Start the server : `npm run start` .
 
-### Brief :
+### Creating the Server :
+   1. Installing Node.js and npm in the system.
+   2. Install Express.js : `npm install express`
+   3. Created a Node.js application .
+   4. With command `npm run start` , we can access the website with the `http://localhost:3000/`
+
+### Navigation to the Web server :
   1. Open the browser and navigate to : `http://localhost:3000` .
   2. To search for a book , enter the book ID between 1-5 in the search Bar , to get a clear details about that particular book .
 
@@ -36,6 +42,12 @@ The Application that is created is a simple web application that provides inform
 
 <img width="850" alt="Screenshot 2024-07-11 at 1 18 23 PM" src="https://github.com/RIYAN1-ux/simple-node-api/assets/109788856/7fb3b764-593d-4124-b484-76c2343e6c7a">
 
+  6. To view the Output format in the JSON Format :
+
+     <img width="1440" alt="Screenshot 2024-07-11 at 3 31 37 PM" src="https://github.com/RIYAN1-ux/simple-node-api/assets/109788856/f60f9d51-4a8e-426f-b1bd-d97d24b9426a">
+
+
+     
 # Contenarization of Webserver using Docker 
 
 1. Installing the Docker Desktop .
@@ -141,6 +153,10 @@ The Application that is created is a simple web application that provides inform
 
    <img width="1440" alt="Screenshot 2024-07-11 at 3 03 13 PM" src="https://github.com/RIYAN1-ux/simple-node-api/assets/109788856/d1b7632e-a928-4dca-85d3-39db123819a8">
 
-   
-   
+# Checking whether our container is running on Non-Privilege mode or not .
+
+
+
+<img width="1440" alt="Screenshot 2024-07-11 at 3 54 56 PM" src="https://github.com/RIYAN1-ux/simple-node-api/assets/109788856/d418285e-f526-4a88-a859-604dc1423b48">
+
    
