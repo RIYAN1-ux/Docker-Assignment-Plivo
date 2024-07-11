@@ -1,6 +1,6 @@
 # Steps for creation of a Node.js Application with Express.js in a Docker Container 
-1. This Repository shows that , the full structure how we created a Application where we run an API in Node.js with Express.js and created a Docker Image for it . 
-2. After createion of the Docker image with the Dockerfile that we created , we basically used Run command to build the Docker container . 
+1. This Repository shows the full structure for how we created a Application where we run an API in Node.js with Express.js and created a Docker Image for it . 
+2. After creation of the Docker image with the Dockerfile that we created , we basically used Run command to build the Docker container . 
 3. After that we particularly used the Docker image to run the application in the container and accessed the Application from there .
    # About the Application 
 The Application that is created is a simple web application that provides information about a collection of books through a RESTful API. It consists of a backend server created with Node.js and Express and a frontend interface designed with HTML, CSS, and JavaScript.
@@ -20,13 +20,13 @@ The Application that is created is a simple web application that provides inform
   2. Install all dependencies : `npm install` .
   3. Start the server : `npm run start` .
 
-### Creating the Server :
+### Creating the Web Server :
    1. Installing Node.js and npm in the system.
    2. Install Express.js : `npm install express`
    3. Created a Node.js application .
    4. With command `npm run start` , we can access the website with the `http://localhost:3000/`
 
-### Navigation to the Web server :
+### Navigation :
   1. Open the browser and navigate to : `http://localhost:3000` .
   2. To search for a book , enter the book ID between 1-5 in the search Bar , to get a clear details about that particular book .
 
