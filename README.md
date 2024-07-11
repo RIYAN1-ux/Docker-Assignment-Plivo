@@ -15,7 +15,7 @@ The Application that is created is a simple web application that provides inform
   2. It provides an endpoint to retrieve a book by its own unique ID: `GET /books/:id` .
   3. It also serves static files for the frontend .
 
-# Coming up with the Installation guide :
+# Installation guide :
   1. Clone the repository : `git clone <Repository Web URL>` .
   2. Install all dependencies : `npm install` .
   3. Start the server : `npm run start` .
