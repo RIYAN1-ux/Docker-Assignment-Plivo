@@ -24,4 +24,12 @@ The Application that is created is a simple web application that provides inform
   1. Open the browser and navigate to : `http://localhost:3000` .
   2. To search for a book , enter the book ID between 1-5 in the search Bar , to get a clear details about that particular book .
   3. To see the JSON response to view all the books : `http://localhost:3000/books` .
+      The whole Landing page : 
+<img width="850" alt="Screenshot 2024-07-11 at 1 13 14 PM" src="https://github.com/RIYAN1-ux/simple-node-api/assets/109788856/880726c5-26b6-4e2e-89a6-f9129bca7d80">
+
   4. To view any particular book : `http://localhost:3000/books/id` .
+     If searched for a Paticular Book Id : 
+
+<img width="850" alt="Screenshot 2024-07-11 at 1 18 23 PM" src="https://github.com/RIYAN1-ux/simple-node-api/assets/109788856/7fb3b764-593d-4124-b484-76c2343e6c7a">
+
+
