@@ -125,6 +125,9 @@ The Application that is created is a simple web application that provides inform
    
    `:v_` : we can specify the particular version build .
 
+   <img width="1440" alt="Screenshot 2024-07-11 at 3 02 25 PM" src="https://github.com/RIYAN1-ux/simple-node-api/assets/109788856/789f90c7-861a-4150-9f3a-bc11a2e916d4">
+
+
 7. Docker Run Comands :
 
    ``` Console :
@@ -135,6 +138,9 @@ The Application that is created is a simple web application that provides inform
    `-d` : It runs the container in the background .
    `-p 3000:3000` : It maps the port 3000 of host to the port 3000 of the container .
    `--name ` : Specifies the name of the container .
+
+   <img width="1440" alt="Screenshot 2024-07-11 at 3 03 13 PM" src="https://github.com/RIYAN1-ux/simple-node-api/assets/109788856/d1b7632e-a928-4dca-85d3-39db123819a8">
+
    
    
    
